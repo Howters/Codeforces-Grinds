@@ -22,25 +22,15 @@ int main(){
 			count2++;
 		}
 	}
-	if((count1 == 1 && count2 == 0) || (count1==0 && count2==1) || (count1%2==1 && count2 == 0) || (count2%1==1 && count1==0)){
+	if((count1 == 1 && count2 == 0) || (count1==0 && count2==1) || (count1%2==1 && count2 == 0) || (count2%2==1 && count1==0)){
 		cout << "NO" << endl;
 		return 0;
 	}
 	if(count1 %2 ==1){
-		if(count2%2 ==1 ){
-			cout << "NO" << endl;
-		}
-		else{
-			cout << "NO" << endl;
-		}
+		 cout << "NO"<<endl;
 	}
 	else{
-		if(count2%2==1){
-			cout << "YES" << endl;
-		}
-		else {
-			cout << "YES" << endl;
-		}
+		cout << "YES" << endl;
 	}
 //	cout << count1 << " " << count2 << endl;
 
