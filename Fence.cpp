@@ -1,54 +1,33 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <map>
-#include <string.h>
-#include <math.h>
-#define lld  long long int
-#define loop(x,n) for(int x = 0; x < n; x++)
+#define lld long long int
 using namespace std;
 
-
-int main(){
-	lld n,k;
-	cin >> n >> k;
-	lld arr[n+1]={0},check = 0;
-	loop (i,n){
-		cin >> arr[i];
-		if(i >0){
-			if (arr[i] != arr[i-1]){
-				check = 1;
-			}
-		}
-	}
-	
-	if(check == 0){
-		cout << 1 << endl;
-		return 0;
-	}
-	lld index = -1, min = -1, sum = 0, start = 0, count = 0;
-	if(n==k){
-		cout << 1 << endl;
-		return 0;
-	}
-	loop (i,n){
-		sum+= arr[i];
-		count ++;
-		if(count == k){
-			if(min == -1){
-				min = sum;
-				index = start + 1;
-			}
-			else if(sum < min){
-				min = sum;
-				index = start +1 ;
-			}
-		sum = 0;
-		i = start++;
-		count = 0;
-		}
-	}
-	cout << index << endl;
-	return 0;
-
+int main() {
+    lld n, k;
+    cin >> n >> k;
+    
+    vector<lld> arr(n);
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    lld sum = 0;
+    for (int i = 0; i < k; i++) {
+        sum += arr[i];
+    }
+    
+    lld min_sum = sum;
+    lld min_index = 0;
+    
+    for (int i = k; i < n; i++) {
+        sum = sum - arr[i-k] + arr[i];
+        if (sum < min_sum) {
+            min_sum = sum;
+            min_index = i - k + 1;
+        }
+    }
+    
+    cout << min_index + 1 << endl;
+    return 0;
 }
